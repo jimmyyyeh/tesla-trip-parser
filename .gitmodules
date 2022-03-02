@@ -1,0 +1,3 @@
+[submodule "src/tesla_trip_common"]
+	path = src/tesla_trip_common
+	url = git@github.com:jimmyyyeh/tesla-trip-common.git
