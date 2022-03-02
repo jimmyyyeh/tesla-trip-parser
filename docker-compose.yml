@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  tesla_trip_parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tesla_trip_parser
+    image: tesla-trip-parser
+    volumes:
+      - ./src:/app:rw
+    env_file: .env
+    networks:
+      - tesla-trip-proxy
+    tty: true
+
+networks:
+  tesla-trip-proxy:
+    external:
+      name: tesla-trip-network
