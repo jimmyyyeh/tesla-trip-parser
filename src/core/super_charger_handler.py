@@ -38,7 +38,8 @@ class SuperChargerHandler:
         }
         response = requests.get(url, headers=headers)
         table_df = pd.read_html(response.text)[0]
-        table_df = table_df.dropna(axis=1)
+        table_df = table_df[['地點', '縣市', 'TPC', 'CCS2', '樓層', '營業時間', '停車收費', '充電費率', '版本']]
+        table_df = table_df.fillna('…')
         table_df = table_df.replace('…', None)
         data_list = table_df.to_dict('records')
         return data_list
